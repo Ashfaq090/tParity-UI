@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+@layer components {
+    .btn-olive {
+        @apply cursor-pointer py-3 px-4 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out active:scale-95 active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+        background-color: theme('colors.olive', #787F56);
+    }
+
+    .btn-olive:hover {
+        background-color: theme('colors.deep-green', #30360E);
+    }
+
+    .btn-deep-green {
+        @apply cursor-pointer py-3 px-4 text-white font-bold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out active:scale-95 active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+        background-color: theme('colors.deep-green', #30360E);
+    }
+
+    .bg-olive-light {
+        background-color: rgba(120, 127, 86, 0.5);
+    }
+
+}

@@ -1,0 +1,17 @@
+<p>profile works!</p>
+
+@for(contact of contactsResource.value() ?? []; track contact.id){
+
+    <h3>
+        {{contact?.name}}
+    </h3>
+    <p>
+        {{contact?.email}}
+        {{contact?.phone}}
+    </p>
+    <button type="button" (click)="deleteContact(contact.id)"
+        class="border-purple-600 text-purple-600 hover:border-transparent hover:bg-purple-600 hover:text-white">
+        Delete
+    </button>
+
+}
