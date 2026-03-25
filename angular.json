@@ -32,7 +32,9 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "baseHref": "/tParity-UI",
+            "outputPath": "dist/tParity-UI/browser"
           },
           "configurations": {
             "production": {
