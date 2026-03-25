@@ -21,3 +21,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Angular Deploy gh-pages
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          angular_project_dir: ./dist/tParity-UI/browser
