@@ -35,7 +35,10 @@
               "entry": "src/server.ts"
             },
             "baseHref": "/tParity-UI/",
-            "outputPath": "dist/tParity-UI/browser"
+            "outputPath": {
+              "base": "dist/tParity-UI",
+              "browser": "browser"
+            }
           },
           "configurations": {
             "production": {
