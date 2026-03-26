@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:tParity-UI": "node dist/tParity-UI/server/server.mjs",
-    "github-build": "ng build --configuration production --base-href '/tParity-UI/'",
+    "github-build": "ng build --base-href '/tParity-UI/'",
     "github-deploy": "npx angular-cli-ghpages --dir=dist/tParity-UI/browser --no-silent"
   },
   "prettier": {
