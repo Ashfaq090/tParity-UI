@@ -60,6 +60,7 @@ export class Login implements AfterViewInit {
   private waitForGoogle() {
     if (window.google?.accounts?.id) {
       this.initGoogle();
+      this.renderHiddenButton();
     } else {
       setTimeout(() => this.waitForGoogle(), 100);
     }
@@ -67,16 +68,28 @@ export class Login implements AfterViewInit {
 
   private initGoogle() {
     window.google.accounts.id.initialize({
-      client_id: '166510457587-2avg8jueootqc26b6ujvjp3i0mjq1f6i.apps.googleusercontent.com',
+      client_id: '882752959104-c31jblq3qrtm5vn2av2i2rt6kdrr8f1n.apps.googleusercontent.com',
       callback: (response: any) => this.handleCredentialResponse(response),
-      use_fedcm_for_prompt: false
+      use_fedcm_for_prompt: false,
+      cancel_on_tap_outside: false,
     });
   }
 
+  private renderHiddenButton() {
+    window.google.accounts.id.renderButton(
+      document.getElementById('google-btn-hidden')!,
+      {
+        type: 'standard',
+        theme: 'outline',
+        size: 'large',
+      }
+    );
+  }
+
   private handleCredentialResponse(response: any) {
-    console.log('Google ID Token:', response.credential);
+    console.log('Google ID Token:', response);
     // Handle the token (send to backend)
-    this.authService.googleLogin({ token: response.credential })
+    this.authService.googleLogin({ token: response.access_token })
     .then(res => {
       console.log('Google login successful:', res);
     }).catch(err => {
@@ -85,6 +98,19 @@ export class Login implements AfterViewInit {
   }
 
   loginWithGooglePopup() {
-    window.google.accounts.id.prompt();
+    // window.google.accounts.id.prompt();
+    // window.google.accounts.oauth2.initCodeClient({
+    //   client_id: '882752959104-c31jblq3qrtm5vn2av2i2rt6kdrr8f1n.apps.googleusercontent.com',
+    //   scope: 'email profile openid',
+    //   callback: (response: any) => this.handleCredentialResponse(response),
+    //   prompt: 'select_account'   // ← forces account selection every time
+    // }).requestCode();
+    window.google.accounts.oauth2.initTokenClient({
+      client_id: '882752959104-c31jblq3qrtm5vn2av2i2rt6kdrr8f1n.apps.googleusercontent.com',
+      scope: 'email profile openid',
+      callback: (response: any) => this.handleCredentialResponse(response),
+      prompt: 'select_account'   // ← forces account selection every time
+    }).requestAccessToken();
   }
+
 }
