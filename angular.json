@@ -23,7 +23,8 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/assets"
+              "src/assets",
+              "src/404.html"
             ],
             "styles": [
               "src/styles.css"
@@ -33,7 +34,7 @@
             "ssr": {
               "entry": "src/server.ts"
             },
-            "baseHref": "/tParity-UI",
+            "baseHref": "/tParity-UI/",
             "outputPath": "dist/tParity-UI/browser"
           },
           "configurations": {

@@ -26,6 +26,9 @@ jobs:
       - name: Build
         run: npm run github-build
 
+      - name: Add .nojekyll                        # ← Fix 2: stops Jekyll eating your files
+        run: touch ./dist/tParity-UI/browser/.nojekyll
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4   # ← fixed (was v3, deprecated)
         with:
@@ -37,3 +40,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/tParity-UI/browser
+          enable_jekyll: false
